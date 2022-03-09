@@ -16,3 +16,7 @@ app = Flask(__name__)
 app.config.from_object(Config)
 # aka configure our flask app from the config object we just wrote
 
+#we need to tell the app where any routes or models exist
+    #import the routes file here (must be after the definition and config of app)
+from . import routes
+    #from the app folder import the routes
