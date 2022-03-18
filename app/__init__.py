@@ -17,7 +17,13 @@ app.register_blueprint(user)
 
 
 db.init_app(app)
+migrate = Migrate(app, db)
 
+
+login.init_app(app)
+login.login_view = 'user.signin'
+login.login_message = 'Please sign in to view.'
+login.login_message_category = 'warning'
 
 from . import routes
 from . import models
