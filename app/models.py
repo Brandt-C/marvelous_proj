@@ -1,13 +1,6 @@
-# Marvel Character Model should include the following fields:
-# - id (Integer)
-# - name (String)
-# - description (String)
-# - comics_appeared_in (Integer)
-# - super_power (String)
-# - date_created (DateTime w/ datetime.utcnow)
 
 
-
+from enum import unique
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
@@ -25,7 +18,7 @@ login = LoginManager()
 def load_user(user_id):
     return User.query.get(user_id)
 
-    
+
 class User(db.Model, UserMixin):
     id = db.Column(db.String(50), primary_key=True)
     username = db.Column(db.String(15), nullable=False, unique=True)
@@ -42,3 +35,21 @@ class User(db.Model, UserMixin):
         self.last_name = last_name
         self.password = generate_password_hash(password)
         self.id = str(uuid4())
+
+# Marvel Character Model should include the following fields:
+# - id (Integer)
+# - name (String)
+# - description (String)
+# - comics_appeared_in (Integer)
+# - super_power (String)
+# - date_created (DateTime w/ datetime.utcnow)
+
+class Char(db.Model):
+    id = db.Column(db.String(50), primary_key=True)
+    s_name = db.Column(db.String(75), unique=True, nullable=False)
+    name = db.Column(db.String(75))
+    description = db.Column(db.String(255))
+    comic_appearances = db.Column(db.Integer)
+    super_power = db.Column(db.String(200))
+    equipment = db.Column(db.String(150))
+    date_created = db.Column(db.DateTime, default=datetime.now(timezone.utc))
