@@ -1,11 +1,13 @@
 from flask import Blueprint, render_template, request, jsonify
+from flask_login import login_required, current_user
+from app.api.apiforms import AddForm
 
 api = Blueprint('api', __name__, url_prefix='/api')
 
 
 
 
-from app.models import db, Char
+from app.models import db, Char, User, load_user, to_dict
 
 
 
@@ -62,6 +64,16 @@ def delChar(s_name):
     return jsonify({'I hope you\'re happy. . . Deleted-': char.to_dict()}), 200
 
 # @api.route('/add_char', methods=['GET', 'POST'])
+# @login_required
 # def guiAddChar():
+#     form = AddForm()
+#     if request.method == 'POST':
+#         n = Char(form.data)
+#         n.contributor = current_user.username
+    
+    
+    
+    
+    
 #     return render_template('/add_char.html')
 
