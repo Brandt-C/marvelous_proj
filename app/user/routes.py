@@ -34,7 +34,7 @@ def register():
                 flash(f'Username or email has been used previously, please try a different entry!')
                 return redirect(url_for('user.register'))
             login_user(newuser)
-            flash(f'Registration successful! Good ricking job {rform.first_name}!', category='success')
+            flash(f'Registration successful! Welcome {rform.first_name}!', category='success')
             return redirect(url_for('home'))
         else:
             flash("didn't work!!!!!", category='danger')

@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField
+from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 
 class AddForm(FlaskForm):
@@ -9,6 +9,7 @@ class AddForm(FlaskForm):
     comic_appearances = StringField('Comic book appearances')
     super_power = StringField('Super Powers')
     equipment = StringField('Equipment/tools/tech')
+    submit = SubmitField()
 
 
 

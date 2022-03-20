@@ -1,13 +1,13 @@
-from flask import Blueprint, render_template, request, jsonify
+from flask import Blueprint, render_template, request, jsonify, flash, url_for, redirect
 from flask_login import login_required, current_user
 from app.api.apiforms import AddForm
 
-api = Blueprint('api', __name__, url_prefix='/api')
+api = Blueprint('api', __name__, template_folder='apitemps', url_prefix='/api')
 
 
 
 
-from app.models import db, Char, User, load_user, to_dict
+from app.models import db, Char, User, load_user
 
 
 
@@ -63,17 +63,17 @@ def delChar(s_name):
     db.session.commit()
     return jsonify({'I hope you\'re happy. . . Deleted-': char.to_dict()}), 200
 
-# @api.route('/add_char', methods=['GET', 'POST'])
+@api.route('/add_char', methods=['GET', 'POST'])
 # @login_required
-# def guiAddChar():
-#     form = AddForm()
-#     if request.method == 'POST':
-#         n = Char(form.data)
-#         n.contributor = current_user.username
+def guiAddChar():
+    form = AddForm()
+    if request.method == 'POST':
+        n = Char(form.data)
+        n.contributor = current_user.username
+        db.session.add(n)
+        db.session.commit()
+        flash('New character added. Thanks for your contribution!', category='success')
+        return redirect(url_for('index.html'))
     
-    
-    
-    
-    
-#     return render_template('/add_char.html')
+    return render_template('add_char.html', form=form)
 

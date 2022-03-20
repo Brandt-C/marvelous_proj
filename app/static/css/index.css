@@ -1,0 +1,23 @@
+* {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
+}
+
+body{
+    background-image: url("../images/medley1.jpg"), url("../images/medley2.jpg"), url("../images/medley3.jpg");
+    background-repeat: space;
+    background-color: rgb(153, 152, 152);
+    height: 200px;
+    background-size:cover;
+}
+
+#info-head{
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    color: rgb(179, 0, 0);
+    
+}
+.alert {
+
+    vertical-align: bottom;
+}

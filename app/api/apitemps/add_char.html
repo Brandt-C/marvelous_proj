@@ -1,5 +1,38 @@
 {% extends 'index.html' %}
 
-{% block content %}
-
+{% block first %}
+<h4 style="text-align: center;"><b>Create a new character!</b></h4>
+<div class="container mt-4">
+    <form class="row justify-content-md-center" method="POST">
+        {{ form.hidden_tag() }}
+        <div class="mb-3 col-5">
+            {{ form.s_name.label }}
+            {{ form.s_name(class='form-control', placeholder='Super Name:')}}
+        </div>
+        <div class="mb-3 col-5">
+            {{ form.name.label }}
+            {{ form.name(class='form-control', placeholder='Given Name:')}}
+        </div>
+        <div class="mb-3 col-5">
+            {{ form.description.label }}
+            {{ form.description(class='form-control', placeholder='Description:')}}
+        </div>
+        <div class="mb-3 col-5">
+            {{ form.comic_appearances.label }}
+            {{ form.comic_appearances(class='form-control', placeholder='Comic Book Appearances:')}}
+        </div>
+        <div class="mb-3 col-5">
+            {{ form.super_power.label }}
+            {{ form.super_power(class='form-control', placeholder='Superpower/s:')}}
+        </div>
+        <div class="mb-3 col-5">
+            {{ form.equipment.label }}
+            {{ form.equipment(class='form-control', placeholder='Equipment:')}}
+        </div>
+    </form>
+    
+</div>
+<div class="d-grid gap-2 col-1 mx-auto mt-4">
+        {{ form.submit(class='btn btn-primary') }}
+        </div>
 {% endblock %}
